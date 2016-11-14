@@ -1,7 +1,12 @@
 ﻿  MSLLexeme.cpp
-c:\users\william callahan\documents\visual studio 2015\projects\cs299\msl_compiler_project\msllexeme.cpp(175): warning C4018: '<': signed/unsigned mismatch
-c:\users\william callahan\documents\visual studio 2015\projects\cs299\msl_compiler_project\msllexeme.cpp(200): warning C4018: '<': signed/unsigned mismatch
-c:\users\william callahan\documents\visual studio 2015\projects\cs299\msl_compiler_project\msllexeme.cpp(231): warning C4018: '<': signed/unsigned mismatch
-c:\users\william callahan\documents\visual studio 2015\projects\cs299\msl_compiler_project\msllexeme.cpp(238): warning C4018: '<': signed/unsigned mismatch
-  MSL_Compiler_Project.vcxproj -> C:\Users\William Callahan\Documents\Visual Studio 2015\Projects\CS299\Debug\MSL_Compiler_Project.exe
-  MSL_Compiler_Project.vcxproj -> C:\Users\William Callahan\Documents\Visual Studio 2015\Projects\CS299\Debug\MSL_Compiler_Project.pdb (Partial PDB)
+c:\users\william callahan\git\trunk\wcsu-cs-299-01\msl_compiler_project\msllexeme.cpp(175): warning C4018: '<': signed/unsigned mismatch
+c:\users\william callahan\git\trunk\wcsu-cs-299-01\msl_compiler_project\msllexeme.cpp(200): warning C4018: '<': signed/unsigned mismatch
+c:\users\william callahan\git\trunk\wcsu-cs-299-01\msl_compiler_project\msllexeme.cpp(231): warning C4018: '<': signed/unsigned mismatch
+c:\users\william callahan\git\trunk\wcsu-cs-299-01\msl_compiler_project\msllexeme.cpp(238): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  Compiling...
+  main.cpp
+c:\users\william callahan\git\trunk\wcsu-cs-299-01\msl_compiler_project\main.cpp(11): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  MSL_Compiler_Project.vcxproj -> C:\Users\William Callahan\git\trunk\wcsu-cs-299-01\Debug\MSL_Compiler_Project.exe
+  MSL_Compiler_Project.vcxproj -> C:\Users\William Callahan\git\trunk\wcsu-cs-299-01\Debug\MSL_Compiler_Project.pdb (Partial PDB)

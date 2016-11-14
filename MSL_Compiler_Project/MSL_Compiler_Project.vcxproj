@@ -113,10 +113,12 @@
     <ClCompile Include="FileOperations.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MSLLexeme.cpp" />
+    <ClCompile Include="MSLSyntax.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FileOperations.h" />
     <ClInclude Include="MSLLexeme.h" />
+    <ClInclude Include="MSLSyntax.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="test.txt" />

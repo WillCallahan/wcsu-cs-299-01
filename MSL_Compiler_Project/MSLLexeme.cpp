@@ -1,8 +1,25 @@
 #include "MSLLexeme.h"
 #include <stdexcept>
 
-using namespace edu::wcsu::cs::msl;
+using namespace edu::wcsu::cs::msl::service;
 using namespace std;
+
+#pragma region TokenMap
+
+Word::Word(int identifier, string value) {
+	this->identifier = identifier;
+	this->value = value;
+}
+
+int Word::getIdentifier() const {
+	return identifier;
+}
+
+string Word::getValue() const {
+	return value;
+}
+
+#pragma endregion 
 
 #pragma region Terminal Converter
 
@@ -216,6 +233,11 @@ LexicalAnalysis::LexicalAnalysis(string* text) {
 	this->text = text;
 }
 
+LexicalAnalysis::~LexicalAnalysis() {
+	delete this->text;
+}
+
+
 void LexicalAnalysis::setText(string* text) {
 	this->text = text;
 }
@@ -264,5 +286,26 @@ vector<string> LexicalAnalysis::getLexemeVector() const {
 	}
 	return lexemeVector;
 }
+
+/**
+ * Converts a list of tokens to a list of Words
+ */
+vector<Word> LexicalAnalysis::getWordVector(vector<string> tokenVector) const {
+	vector<Word> wordVector = vector<Word>();
+	for (int i = 0; i < tokenVector.size(); i++) {
+		vector<string>* matches = TerminalConverter::getMatches(tokenVector.at(i));
+		if (matches->size() == 0) {
+			//Terminal variable; determine if it is a function name or variable name
+		}
+		else if (matches->size() == 1)
+			wordVector.push_back(Word(TerminalConverter::getIntValue(tokenVector.at(i)), tokenVector.at(i)));
+		else if (matches->size() > 1)
+			throw new invalid_argument("Token has more than one match!");
+		delete matches;
+
+	}
+	return wordVector;
+}
+
 
 #pragma endregion 

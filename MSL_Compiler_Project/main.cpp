@@ -1,7 +1,6 @@
 #include "MSLLexeme.h"
 #include "FileOperations.h"
 
-using namespace edu::wcsu::cs::msl;
 using namespace edu::wcsu::cs::msl::service;
 using namespace std;
 

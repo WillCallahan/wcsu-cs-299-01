@@ -11,6 +11,7 @@ namespace edu {
 	namespace wcsu {
 		namespace cs {
 			namespace msl {
+				namespace service {
 
 #define NEW_LINE '\n'
 #define CARRAGE_RETURN '\r'
@@ -42,30 +43,42 @@ namespace edu {
 #define T_WRITE 305
 #define T_ASSIGN 306
 
-				class TerminalConverter {
-				private:
-					TerminalConverter();
-				public:
-					static string getStringValue(const int&);
-					static int getIntValue(const string&);
-					static vector<string>* asStringVector();
-					static vector<int>* asIntVector();
-					static vector<string>* getMatches(const string);
-					static vector<string>* getSpecialStringVector();
-					static vector<string>* getMatchesSpecialString(const string);
-				};
+					class Word {
+					private:
+						int identifier; //ID referencing a token
+						string value; //Value of the word
+					public:
+						Word(int identifier, string value);
+						int getIdentifier() const;
+						string getValue() const;
+					};
 
-				class LexicalAnalysis {
-				private:
-					string* text;
-					LexicalAnalysis();
-				public:
-					LexicalAnalysis(string* text);
-					void setText(string* text);
-					string* getText() const;
-					vector<string> getLexemeVector() const;
-				};
+					class TerminalConverter {
+					private:
+						TerminalConverter();
+					public:
+						static string getStringValue(const int&);
+						static int getIntValue(const string&);
+						static vector<string>* asStringVector();
+						static vector<int>* asIntVector();
+						static vector<string>* getMatches(const string);
+						static vector<string>* getSpecialStringVector();
+						static vector<string>* getMatchesSpecialString(const string);
+					};
 
+					class LexicalAnalysis {
+					private:
+						string* text;
+						LexicalAnalysis();
+					public:
+						LexicalAnalysis(string* text);
+						~LexicalAnalysis();
+						void setText(string* text);
+						string* getText() const;
+						vector<string> getLexemeVector() const;
+						vector<Word> getWordVector(vector<string> terminalVector) const;
+					};
+				}
 			}
 		}
 	}
