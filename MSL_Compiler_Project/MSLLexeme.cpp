@@ -290,22 +290,19 @@ vector<string> LexicalAnalysis::getLexemeVector() const {
 /**
  * Converts a list of tokens to a list of Words
  */
-vector<Word> LexicalAnalysis::getWordVector(vector<string> tokenVector) const {
+vector<Word> LexicalAnalysis::getWordVector(vector<string> tokenVector) {
 	vector<Word> wordVector = vector<Word>();
 	for (int i = 0; i < tokenVector.size(); i++) {
 		vector<string>* matches = TerminalConverter::getMatches(tokenVector.at(i));
-		if (matches->size() == 0) {
-			//Terminal variable; determine if it is a function name or variable name
-		}
+		if (matches->size() == 0)
+			wordVector.push_back(Word(T_IDENTIFIER, tokenVector.at(i)));
 		else if (matches->size() == 1)
 			wordVector.push_back(Word(TerminalConverter::getIntValue(tokenVector.at(i)), tokenVector.at(i)));
 		else if (matches->size() > 1)
 			throw new invalid_argument("Token has more than one match!");
 		delete matches;
-
 	}
 	return wordVector;
 }
-
 
 #pragma endregion 

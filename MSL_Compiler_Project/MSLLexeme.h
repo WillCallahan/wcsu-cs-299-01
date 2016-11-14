@@ -42,6 +42,7 @@ namespace edu {
 #define T_READ 304
 #define T_WRITE 305
 #define T_ASSIGN 306
+#define T_IDENTIFIER 307
 
 					class Word {
 					private:
@@ -76,7 +77,7 @@ namespace edu {
 						void setText(string* text);
 						string* getText() const;
 						vector<string> getLexemeVector() const;
-						vector<Word> getWordVector(vector<string> terminalVector) const;
+						static vector<Word> getWordVector(vector<string> terminalVector);
 					};
 				}
 			}
