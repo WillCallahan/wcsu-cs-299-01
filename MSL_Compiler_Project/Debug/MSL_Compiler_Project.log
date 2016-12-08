@@ -1,5 +1,4 @@
-﻿  main.cpp
-c:\users\william callahan\git\trunk\wcsu-cs-299-01\msl_compiler_project\main.cpp(12): warning C4018: '<': signed/unsigned mismatch
-c:\users\william callahan\git\trunk\wcsu-cs-299-01\msl_compiler_project\main.cpp(16): warning C4018: '<': signed/unsigned mismatch
+﻿  Skipping... (no relevant changes detected)
+  main.cpp
   MSL_Compiler_Project.vcxproj -> C:\Users\William Callahan\git\trunk\wcsu-cs-299-01\Debug\MSL_Compiler_Project.exe
   MSL_Compiler_Project.vcxproj -> C:\Users\William Callahan\git\trunk\wcsu-cs-299-01\Debug\MSL_Compiler_Project.pdb (Partial PDB)

@@ -1,0 +1,13 @@
+﻿  MSLLexeme.cpp
+MSLLexeme.cpp(192): warning C4018: '<': signed/unsigned mismatch
+MSLLexeme.cpp(217): warning C4018: '<': signed/unsigned mismatch
+MSLLexeme.cpp(253): warning C4018: '<': signed/unsigned mismatch
+MSLLexeme.cpp(260): warning C4018: '<': signed/unsigned mismatch
+MSLLexeme.cpp(295): warning C4018: '<': signed/unsigned mismatch
+  Generating code
+  4 of 392 functions ( 1.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  MSL_Compiler_Project.vcxproj -> C:\Users\William Callahan\git\trunk\wcsu-cs-299-01\Release\MSL_Compiler_Project.exe
+  MSL_Compiler_Project.vcxproj -> C:\Users\William Callahan\git\trunk\wcsu-cs-299-01\Release\MSL_Compiler_Project.pdb (Full PDB)

@@ -234,7 +234,7 @@ LexicalAnalysis::LexicalAnalysis(string* text) {
 }
 
 LexicalAnalysis::~LexicalAnalysis() {
-	delete this->text;
+	
 }
 
 

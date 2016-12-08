@@ -42,7 +42,11 @@ namespace edu {
 #define T_READ 304
 #define T_WRITE 305
 #define T_ASSIGN 306
-#define T_IDENTIFIER 307
+
+#define T_TEXT 350
+#define T_INT 351
+#define T_OPERATOR 352
+#define T_IDENTIFIER 353
 
 					class Word {
 					private:
