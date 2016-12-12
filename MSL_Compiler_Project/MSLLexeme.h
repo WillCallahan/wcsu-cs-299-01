@@ -48,6 +48,7 @@ namespace edu {
 #define T_INT 351
 #define T_OPERATOR 352
 #define T_IDENTIFIER 353
+#define T_VARIABLE 354
 
 					class Word {
 					private:
