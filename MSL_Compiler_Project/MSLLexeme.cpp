@@ -48,6 +48,8 @@ string TerminalConverter::getStringValue(const int& terminal) {
 		return string(1, T_PERIOD);
 	case T_NOT:
 		return string(1, T_NOT);
+	case T_COMMA:
+		return string(1, T_COMMA);
 	case T_WHILE:
 		return "WHILE";
 	case T_DO:
@@ -100,6 +102,8 @@ int TerminalConverter::getIntValue(const string& terminal) {
 		return T_PERIOD;
 	else if (terminal == getStringValue(T_NOT))
 		return T_NOT;
+	else if (terminal == getStringValue(T_COMMA))
+		return T_COMMA;
 	else if (terminal == getStringValue(T_WHILE))
 		return T_WHILE;
 	else if (terminal == getStringValue(T_DO))
@@ -142,6 +146,7 @@ vector<string>* TerminalConverter::asStringVector() {
 	terminalVector->push_back(getStringValue(T_SEMICOLON));
 	terminalVector->push_back(getStringValue(T_PERIOD));
 	terminalVector->push_back(getStringValue(T_NOT));
+	terminalVector->push_back(getStringValue(T_COMMA));
 	terminalVector->push_back(getStringValue(T_WHILE));
 	terminalVector->push_back(getStringValue(T_DO));
 	terminalVector->push_back(getStringValue(T_IF));
@@ -170,6 +175,7 @@ vector<int>* TerminalConverter::asIntVector() {
 	terminalVector->push_back(T_SEMICOLON);
 	terminalVector->push_back(T_PERIOD);
 	terminalVector->push_back(T_NOT);
+	terminalVector->push_back(T_COMMA);
 	terminalVector->push_back(T_WHILE);
 	terminalVector->push_back(T_DO);
 	terminalVector->push_back(T_IF);
@@ -208,6 +214,7 @@ vector<string>* TerminalConverter::getSpecialStringVector() {
 	specialStringVector->push_back(getStringValue(T_SEMICOLON));
 	specialStringVector->push_back(getStringValue(T_PERIOD));
 	specialStringVector->push_back(getStringValue(T_NOT));
+	specialStringVector->push_back(getStringValue(T_COMMA));
 	return specialStringVector;
 }
 
