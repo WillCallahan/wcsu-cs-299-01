@@ -27,7 +27,8 @@ namespace edu {
 #define T_SEMICOLON ';'
 #define T_PERIOD '.'
 #define T_NOT '!'
-#define T_COMMA '.'
+#define T_COMMA ','
+#define T_HASH '#'
 
 #define T_WHILE 256
 #define T_DO 257

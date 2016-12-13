@@ -35,7 +35,9 @@ namespace edu {
 						static int expression(vector<Word>* expression, int index);
 						static int operand(vector<Word>* operand, int index);
 						static int variable(vector<Word>* variable, int index);
+					private:
 						static int methodParameters(vector<Word>* methodParameters, int index);
+						static int variableExpressions(vector<Word>* variableExpressions, int index);
 					};
 
 				}
