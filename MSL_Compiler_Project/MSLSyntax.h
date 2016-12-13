@@ -22,22 +22,22 @@ namespace edu {
 					private:
 						SyntaxAnalyzerUtility();
 					public:
-						static int program(vector<Word>* program, int index);
-						static int procDec(vector<Word>* procDec, int index);
-						static int series(vector<Word>* series, int index);
-						static int statement(vector<Word>* statement, int index);
-						static int assign(vector<Word>* assign, int index);
-						static int whileWords(vector<Word>* whileWords, int index);
-						static int ifWords(vector<Word>* ifWords, int index);
-						static int call(vector<Word>* call, int index);
-						static int read(vector<Word>* read, int index);
-						static int write(vector<Word>* write, int index);
-						static int expression(vector<Word>* expression, int index);
-						static int operand(vector<Word>* operand, int index);
-						static int variable(vector<Word>* variable, int index);
+						static int program(vector<Word>* program, const int constIndex);
+						static int procDec(vector<Word>* procDec, const int constIndex);
+						static int series(vector<Word>* series, const int constIndex);
+						static int statement(vector<Word>* statement, const int constIndex);
+						static int assign(vector<Word>* assign, const int constIndex);
+						static int whileWords(vector<Word>* whileWords, const int constIndex);
+						static int ifWords(vector<Word>* ifWords, const int constIndex);
+						static int call(vector<Word>* call, const int constIndex);
+						static int read(vector<Word>* read, const int constIndex);
+						static int write(vector<Word>* write, const int constIndex);
+						static int expression(vector<Word>* expression, const int constIndex);
+						static int operand(vector<Word>* operand, const int constIndex);
+						static int variable(vector<Word>* variable, const int constIndex);
 					private:
-						static int methodParameters(vector<Word>* methodParameters, int index);
-						static int variableExpressions(vector<Word>* variableExpressions, int index);
+						static int methodParameters(vector<Word>* methodParameters, const int constIndex);
+						static int variableExpressions(vector<Word>* variableExpressions, const int constIndex);
 					};
 
 				}

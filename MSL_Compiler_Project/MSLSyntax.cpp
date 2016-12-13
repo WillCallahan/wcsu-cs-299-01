@@ -23,20 +23,28 @@ SyntaxAnalyzerUtility::SyntaxAnalyzerUtility() {
 	
 }
 
-int SyntaxAnalyzerUtility::program(vector<Word>* program, int index) {
+int SyntaxAnalyzerUtility::program(vector<Word>* program, const int constIndex) {
+	int index = constIndex;
+	int matchIndex;
 	if (program->at(index).getIdentifier() == T_RESERVE) {
-		index++;
-		if (program->at(index).getIdentifier() == T_INT)
-			index++;
+		if (program->at(++index).getIdentifier() == T_INT);
 		else
-			throw illegal_token(program->at(index).getIdentifier());
+			--index;
 	}
-	if ((index = procDec(program, ++index)) < program->size() && program->at(index).getIdentifier() == T_COMMA)
+	while ((matchIndex = procDec(program, index)) != index)
+		index = matchIndex;
+	if ((matchIndex = series(program, index)) != index)
+		index = matchIndex;
+	else
+		return constIndex;
+	if (program->at(index).getIdentifier() == T_PERIOD)
 		return index;
-	throw illegal_token(program->at(index).getIdentifier());
+	else
+		return constIndex;
 }
 
-int SyntaxAnalyzerUtility::procDec(vector<Word>* procDec, int index) {
+int SyntaxAnalyzerUtility::procDec(vector<Word>* procDec, const int constIndex) {
+	int index = constIndex;
 	if (procDec->at(index).getIdentifier() == T_PROC) {
 		if (procDec->at(++index).getIdentifier() == T_IDENTIFIER) {
 			if (procDec->at(++index).getIdentifier() == T_LEFT_PAREN) {
@@ -52,68 +60,72 @@ int SyntaxAnalyzerUtility::procDec(vector<Word>* procDec, int index) {
 			}
 		}
 	}
-	throw illegal_token(procDec->at(index).getIdentifier());
+	return constIndex;
 }
 
-int SyntaxAnalyzerUtility::series(vector<Word>* series, int index) {
+int SyntaxAnalyzerUtility::series(vector<Word>* series, const int constIndex) {
+	int index = constIndex;
 	int matchIndex;
 	while ((matchIndex = statement(series, index)) != index)
 		index = matchIndex;
 	return index;
 }
 
-int SyntaxAnalyzerUtility::statement(vector<Word>* statement, int index) {
+int SyntaxAnalyzerUtility::statement(vector<Word>* statement, const int constIndex) {
 	int matchIndex;
-	if ((matchIndex = assign(statement, index)) != index)
+	if ((matchIndex = assign(statement, constIndex)) != constIndex)
 		return matchIndex;
-	else if ((matchIndex = whileWords(statement, index)) != index)
+	else if ((matchIndex = whileWords(statement, constIndex)) != constIndex)
 		return matchIndex;
-	else if ((matchIndex = ifWords(statement, index)) != index)
+	else if ((matchIndex = ifWords(statement, constIndex)) != constIndex)
 		return matchIndex;
-	else if ((matchIndex = call(statement, index)) != index)
+	else if ((matchIndex = call(statement, constIndex)) != constIndex)
 		return matchIndex;
-	else if ((matchIndex = read(statement, index)) != index)
+	else if ((matchIndex = read(statement, constIndex)) != constIndex)
 		return matchIndex;
-	else if ((matchIndex = write(statement, index)) != index)
+	else if ((matchIndex = write(statement, constIndex)) != constIndex)
 		return matchIndex;
 	else
-		return index;
+		return constIndex;
 }
 
-int SyntaxAnalyzerUtility::assign(vector<Word>* assign, int index) {
+int SyntaxAnalyzerUtility::assign(vector<Word>* assign, const int constIndex) {
+	int index = constIndex;
 	if (assign->at(index).getIdentifier() == T_VARIABLE) {
 		if (assign->at(++index).getIdentifier() == T_ASSIGN) {
 			if ((index = expression(assign, ++index)))
 				return index;
 		}
 	}
-	return index;
+	return constIndex;
 }
 
-int SyntaxAnalyzerUtility::whileWords(vector<Word>* whileWords, int index) {
+int SyntaxAnalyzerUtility::whileWords(vector<Word>* whileWords, const int constIndex) {
 }
 
-int SyntaxAnalyzerUtility::ifWords(vector<Word>* ifWords, int index) {
+int SyntaxAnalyzerUtility::ifWords(vector<Word>* ifWords, const int constIndex) {
 }
 
-int SyntaxAnalyzerUtility::call(vector<Word>* call, int index) {
+int SyntaxAnalyzerUtility::call(vector<Word>* call, const int constIndex) {
 }
 
-int SyntaxAnalyzerUtility::read(vector<Word>* read, int index) {
+int SyntaxAnalyzerUtility::read(vector<Word>* read, const int constIndex) {
 }
 
-int SyntaxAnalyzerUtility::write(vector<Word>* write, int index) {
+int SyntaxAnalyzerUtility::write(vector<Word>* write, const int constIndex) {
+	int index = constIndex;
 	int matchIndex;
 	if (write->at(index).getIdentifier() == T_WRITE) {
 		if (write->at(index + 1).getIdentifier() == T_HASH)
 			++index;
-		if ((matchIndex = expression(write, index)) != index) {
-			//TODO Complete this
-		}
+		if ((matchIndex = expression(write, ++index)) != index)
+			return variableExpressions(write, matchIndex);
 	}
+	return constIndex;
 }
 
-int SyntaxAnalyzerUtility::expression(vector<Word>* expression, int index) {
+int SyntaxAnalyzerUtility::expression(vector<Word>* expression, const int constIndex) {
+	int index = constIndex;
 	int matchIndex;
 	if ((matchIndex = operand(expression, index)) != index) {
 		index = matchIndex;
@@ -127,7 +139,8 @@ int SyntaxAnalyzerUtility::expression(vector<Word>* expression, int index) {
 	return index;
 }
 
-int SyntaxAnalyzerUtility::operand(vector<Word>* operand, int index) {
+int SyntaxAnalyzerUtility::operand(vector<Word>* operand, const int constIndex) {
+	int index = constIndex;
 	int matchIndex = index;
 	if (operand->at(index).getIdentifier() == T_INT)
 		return ++index;
@@ -145,7 +158,8 @@ int SyntaxAnalyzerUtility::operand(vector<Word>* operand, int index) {
 	return index;
 }
 
-int SyntaxAnalyzerUtility::variable(vector<Word>* variable, int index) {
+int SyntaxAnalyzerUtility::variable(vector<Word>* variable, const int constIndex) {
+	int index = constIndex;
 	if (variable->at(index).getIdentifier() == T_IDENTIFIER) {
 		if (variable->at(index + 1).getIdentifier() == T_NOT) {
 			int matchIndex = index + 2;
@@ -157,7 +171,8 @@ int SyntaxAnalyzerUtility::variable(vector<Word>* variable, int index) {
 	return index;
 }
 
-int SyntaxAnalyzerUtility::methodParameters(vector<Word>* methodParameters, int index) {
+int SyntaxAnalyzerUtility::methodParameters(vector<Word>* methodParameters, const int constIndex) {
+	int index = constIndex;
 	if (methodParameters->at(index).getIdentifier() == T_COMMA) {
 		if (methodParameters->at(++index).getIdentifier() == T_IDENTIFIER) {
 			return SyntaxAnalyzerUtility::methodParameters(methodParameters, ++index);
@@ -166,13 +181,16 @@ int SyntaxAnalyzerUtility::methodParameters(vector<Word>* methodParameters, int 
 	return index;
 }
 
-int SyntaxAnalyzerUtility::variableExpressions(vector<Word>* variableExpressions, int index) {
+int SyntaxAnalyzerUtility::variableExpressions(vector<Word>* variableExpressions, const int constIndex) {
+	int index = constIndex;
 	int matchIndex;
 	if (variableExpressions->at(index).getIdentifier() == T_COMMA) {
 		if (variableExpressions->at(index + 1).getIdentifier() == T_HASH)
 			++index;
-		if ((matchIndex = expression(variableExpressions, index + 1)))
+		if ((matchIndex = expression(variableExpressions, ++index)) != index)
+			return SyntaxAnalyzerUtility::variableExpressions(variableExpressions, constIndex);
 	}
+	return constIndex;
 }
 
 #pragma endregion
