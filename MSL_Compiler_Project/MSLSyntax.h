@@ -37,7 +37,9 @@ namespace edu {
 						static int variable(vector<Word>* variable, const int constIndex);
 					private:
 						static int methodParameters(vector<Word>* methodParameters, const int constIndex);
-						static int variableExpressions(vector<Word>* variableExpressions, const int constIndex);
+						static int variableExpressionsWithHash(vector<Word>* variableExpressions, const int constIndex);
+						static int variableExpressionsWithoutHash(vector<Word>* variableExpressionsWithoutHash, const int constIndex);
+						static int variableVariablesWithHash(vector<Word>* variableVariabless, const int constIndex);
 					};
 
 				}

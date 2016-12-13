@@ -54,6 +54,8 @@ string TerminalConverter::getStringValue(const int& terminal) {
 		return "WHILE";
 	case T_DO:
 		return "DO";
+	case T_OD:
+		return "OD";
 	case T_IF:
 		return "IF";
 	case T_THEN:
@@ -108,6 +110,8 @@ int TerminalConverter::getIntValue(const string& terminal) {
 		return T_WHILE;
 	else if (terminal == getStringValue(T_DO))
 		return T_DO;
+	else if (terminal == getStringValue(T_OD))
+		return T_OD;
 	else if (terminal == getStringValue(T_IF))
 		return T_IF;
 	else if (terminal == getStringValue(T_THEN))
@@ -149,6 +153,7 @@ vector<string>* TerminalConverter::asStringVector() {
 	terminalVector->push_back(getStringValue(T_COMMA));
 	terminalVector->push_back(getStringValue(T_WHILE));
 	terminalVector->push_back(getStringValue(T_DO));
+	terminalVector->push_back(getStringValue(T_OD));
 	terminalVector->push_back(getStringValue(T_IF));
 	terminalVector->push_back(getStringValue(T_THEN));
 	terminalVector->push_back(getStringValue(T_ELSE));
@@ -178,6 +183,7 @@ vector<int>* TerminalConverter::asIntVector() {
 	terminalVector->push_back(T_COMMA);
 	terminalVector->push_back(T_WHILE);
 	terminalVector->push_back(T_DO);
+	terminalVector->push_back(T_OD);
 	terminalVector->push_back(T_IF);
 	terminalVector->push_back(T_THEN);
 	terminalVector->push_back(T_ELSE);

@@ -36,6 +36,7 @@ namespace edu {
 #define T_THEN 259
 #define T_ELSE 260
 #define T_FI 261
+#define T_OD 262
 
 #define T_RESERVE 300
 #define T_PROC 301
@@ -49,7 +50,6 @@ namespace edu {
 #define T_INT 351
 #define T_OPERATOR 352
 #define T_IDENTIFIER 353
-#define T_VARIABLE 354
 
 					class Word {
 					private:
